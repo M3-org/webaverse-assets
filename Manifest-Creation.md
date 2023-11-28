@@ -1,15 +1,7 @@
-# **Manifest Setup for Character Studio**
-This guide will help you create your own manifest for character studio. Manifests for character studio are written in json style and its used to tell character studio how its going to work.
-
-# Main Manifest
-This manifest serves the character studio to know where its going to fetch each of the character's manifests, there can only be one of this per character studio project, but can load as many character manifest as you wish.
-
 # Character manifest
-This manifest includes important information for the character studio to work, setting it up, helps the character studio know how to arrange, load and cull trait models correctly.
+Setting up this manifest will serve the character studio to arrange, load and cull trait model options (remove faces underneath) correctly into a single model.
 
-The manifest is divided in 3 sections:
-
-
+___
 
 ## Main Section
 Includes generic and important information such as root assets location, and trait default values.
@@ -238,10 +230,29 @@ Example:
     "modification":"prohibited"
 }
 ```
+___
 
+## Trait Group Section (traits)
+*required object array*
 
-## Trait Group Section 
 Includes trait collection and group specific information such as culling values.
+Every option from below will be enclosed in an array, this is an example of a full trait option:
+```json
+  "traits": [
+    {
+      "trait": "head",
+      "name": "head",
+      "iconSvg": "head.svg",
+      "cullingLayer":0,
+      "cullingDistance":[0.01,0.001],
+      "cameraTarget": {
+        "distance": 0.75,
+        "height": 1.35
+      },
+      "collection": [...]
+    }
+]
+```
 
 ### trait
 *required string*
@@ -316,14 +327,14 @@ Example:
 }
 ```
 
-### collection
+### collection (traits)
 *required array of objects*
 
 An array of all the traits that will be available for this trait group.
 
 Each element from the array represent a single trait. This will be your options in the side menu when selecting any group trait
 
-**id *(required string)***: Unique ID for this trait (cam be used by nft metadata to fetch this value by id).
+**id *(required string)***: Unique ID for this trait (can be used by nft metadata to fetch this value by id).
 
 **name *(required string)***: Display Name for this trait.
 
@@ -352,15 +363,89 @@ Example:
           "cullingLayer": 0,
           "cullingDistance": [0.3,0.001],
           "type": ["strong"],
-          "textureCollection":"skin_tones",
-          "colorCollection":"skin_colors"
+          "textureCollection":"SKIN_TONES",
+          "colorCollection":"SKIN_COLORS"
     }
 ]
 ```
 
-## Texture Collection Section
+___
+
+## Texture Collection Section (textureCollections):
 Used to define a collections of textures that can be assigned to specific traits.
 
-## Color Collection Section:
+```json
+  "textureCollections": [
+    {
+      "trait": "SKIN_TONES",
+      "collection": [...]
+    }
+]
+```
+
+### collection (textures)
+
+An array of all the textures that will be available for this texture trait id.
+
+**id *(required string)***: Unique ID for this trait (can be used by nft metadata to fetch this value by id).
+
+**name *(optional string)***: Display Name for this texture trait.
+
+**directory *(required string)***: Relative location of the file texture for this tait (Full location will be ```assetsLocation + directory```)
+
+**thumbnail *(optional string)***: Relative location of the file model for this tait (Full location will be ```assetsLocation + directory```)
+
+```json
+"collection": [
+    {
+          "id": "BELT_0",
+          "name": "Belt 0",
+          "directory": "_textureCollections/BeltOutfit3/belt_0.png",
+          "thumbnail": "_textureCollections/BeltOutfit3/belt_0.png"
+    }
+]
+```
+___
+## Color Collection Section (colorCollections):
 Used to define a collections of colors that can be assigned to specific traits.
+
+```json
+  "textureCollections": [
+    {
+      "trait": "SKIN_COLORS",
+      "collection": [...]
+    }
+]
+```
+
+### collection (colors)
+
+An array of all the textures that will be available for this texture trait id.
+
+**id *(required string)***: Unique ID for this color trait (can be used by nft metadata to fetch this value by id).
+
+**name *(optional string)***: Display Name for this texture trait.
+
+**value *(required string array)***: Color value enclosed in array.
+
+```json
+"collection": [
+    {
+          "id": "EMERALD",
+          "name": "Emerald",
+          "value":["#7BFFBA"]
+    }
+]
+```
+
+___
+# Culling Distance
+
+Culling distance is defined in an array of 2 numbers [outer, innner]
+
+Outer represents how far a raycast will go outside in normal direction before it detects collision, if it collides, it means the vertex is not visible as it is blocked by another trait with higher culling layer.
+
+Innner represents how far a raycast will go inside in normal direction before it detects collision, if it collides, it means the vertex is not visible as it is blocked by another trait with higher culling layer.
+
+This options only affects how the trait is affected by other traits.
 
