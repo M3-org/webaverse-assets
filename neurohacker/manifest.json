@@ -1,5 +1,5 @@
 {
-    "thumbnail": "./character-assets/neurohacker/neurohacker_icon.png",
+    "thumbnail": "./webaverse-assets/neurohacker/neurohacker_icon.png",
     "requiredTraits":["body", "eyes"],
     "randomTraits":["body", "head", "eyes", "chest", "feet", "legs", "outer"],
     "lipSyncTraits":["body"],
@@ -24,8 +24,8 @@
     "typeRestrictions":{
       "pants":["boots", "accessory_bottom"]
     },
-    "traitsDirectory": "./character-assets/neurohacker/",
-    "thumbnailsDirectory": "./character-assets/neurohacker/",
+    "traitsDirectory": "./webaverse-assets/neurohacker/",
+    "thumbnailsDirectory": "./webaverse-assets/neurohacker/",
     "animationPath": "./3d/animations/idle_neurohacker.fbx",
     "traitIconsDirectory": "./3d/icons/",
     "traitIconsDirectorySvg": "./assets/icons/",

@@ -1,5 +1,5 @@
 {
-  "thumbnail": "./character-assets/drophunter/drophunter_icon.png",
+  "thumbnail": "./webaverse-assets/drophunter/drophunter_icon.png",
   "requiredTraits":["body", "eyes"],
   "randomTraits":["body", "head", "eyes", "chest", "feet", "legs", "outer"],
   "lipSyncTraits":["body"],
@@ -10,8 +10,8 @@
     0.03
   ],
 
-  "traitsDirectory": "./character-assets/drophunter/",
-  "thumbnailsDirectory": "./character-assets/drophunter/",
+  "traitsDirectory": "./webaverse-assets/drophunter/",
+  "thumbnailsDirectory": "./webaverse-assets/drophunter/",
   "animationPath": "./3d/animations/idle_drophunter.fbx",
   "traitIconsDirectory": "./3d/icons/",
   "traitIconsDirectorySvg": "./assets/icons/",

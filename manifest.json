@@ -4,14 +4,14 @@
     "description": "Hunts Drops",
     "portrait": "./assets/portraitImages/DropHunter.png",
     "icon": "./assets/icons/class-drop-hunter.svg",
-    "manifest":"./character-assets/drophunter/manifest.json",
+    "manifest":"./webaverse-assets/drophunter/manifest.json",
     "format": "vrm"   
   },
   {
     "name": "Neurohacker",
     "description": "Hacks Neural Networks",
     "portrait": "./assets/portraitImages/NeuralHacker.png",
-    "manifest":"./character-assets/neurohacker/manifest.json",
+    "manifest":"./webaverse-assets/neurohacker/manifest.json",
     "icon": "./assets/icons/class-neural-hacker.svg",
     "format": "vrm"
   }
